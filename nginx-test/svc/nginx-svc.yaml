@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: nginx
-    version: v1
+    version: v2
   name: nginx-svc
   namespace: guestbook
 spec:
