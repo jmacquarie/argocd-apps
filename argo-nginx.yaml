@@ -10,7 +10,7 @@ spec:
   project: default
   source: 
     path: nginx-test
-    repoURL: "git@github.com:jmacquarie/argocd-apps.git"
+    repoURL: "https://git@github.com:jmacquarie/argocd-apps.git"
     targetRevision: main
   syncPolicy:
     syncOptions:
