@@ -1,17 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
+metadata:
   name: nginx-test
   namespace: argocd
-spec: 
-  destination: 
-    namespace: nginx-test
-    server: "https://kubernetes.default.svc"
+spec:
   project: default
-  source: 
-    path: nginx-test
-    repoURL: "https://git@github.com:jmacquarie/argocd-apps.git"
+  source:
+    repoURL: https://github.com/jmacquarie/argocd-apps.git
     targetRevision: main
+    directory:
+      recurse: true
+    path: nginx-test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
