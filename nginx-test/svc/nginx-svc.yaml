@@ -1,22 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: "2025-06-16T14:08:58Z"
   labels:
     app: nginx
     version: v1
   name: nginx-svc
   namespace: guestbook
-  resourceVersion: "2969319"
-  uid: 86c57bb1-7480-4c60-a993-4a8e93ef69b6
 spec:
-  clusterIP: 10.101.250.60
-  clusterIPs:
-  - 10.101.250.60
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - port: 80
     protocol: TCP
@@ -25,5 +15,4 @@ spec:
     app: nginx
   sessionAffinity: None
   type: ClusterIP
-status:
-  loadBalancer: {}
+
