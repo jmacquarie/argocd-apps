@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: nginx-test
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: nginx-test
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: nginx-test
+    repoURL: "git@github.com:jmacquarie/argocd-apps.git"
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
