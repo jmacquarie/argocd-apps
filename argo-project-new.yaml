@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-project-new
+  namespace: argocd
+spec:
+  project-new: demo-project
+  source:
+    repoURL: https://github.com/jmacquarie/argocd-apps.git
+    targetRevision: main
+    directory:
+      recurse: true
+    path: nginx-test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
+  syncPolicy:
+    automated:
+      prune: true # Automatically delete resources that are no longer defined in the source
+      selfHeal: true # Automatically apply changes to the live state if it diverges from the desired state
+    syncOptions: 
+    - CreateNamespace=true
